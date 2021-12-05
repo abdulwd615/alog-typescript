@@ -7,3 +7,7 @@ interface Graph {
 interface AjanceyListI {
   [key: string]: GraphNode[];
 }
+
+interface GraphI {
+  [key: string]: string[];
+}
