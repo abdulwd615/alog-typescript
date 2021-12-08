@@ -44,8 +44,8 @@ function buildGraph(edges: string[][]) {
 }
 
 function _exploreGraph(graph: GraphI, nodeA: string, nodeB: string) {
-  let visited = new Set<string>();
   let queue: [[string, number]] = [[nodeA, 0]];
+  let visited = new Set<string>([nodeA]);
 
   while (queue.length) {
     let node = queue.shift();
@@ -58,7 +58,6 @@ function _exploreGraph(graph: GraphI, nodeA: string, nodeB: string) {
           if (!visited.has(neighbor)) {
             visited.add(value);
             queue.push([neighbor, distance + 1]);
-            console.log("queue", queue);
           }
         }
       }
@@ -69,7 +68,6 @@ function _exploreGraph(graph: GraphI, nodeA: string, nodeB: string) {
 
 function shortestPath(edges: string[][], nodeA: string, nodeB: string) {
   let graph = buildGraph(edges);
-  console.log("graph", graph);
 
   return _exploreGraph(graph, nodeA, nodeB);
 }
